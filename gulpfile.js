@@ -25,4 +25,15 @@ gulp.task('html', function(){
         }))
         .pipe(gulp.dest('build/'))
         .pipe(connect.reload());
+});
+
+gulp.task('css', function(){
+    gulp.src('dev/assets/css/*.css')
+        .pipe(concat_css())
+        .pipe(csso())
+        .pipe(rename(function(path){
+            path.dirname = ''
+        }))
+        .pipe(gulp.dest('build/css/mystyle.css'))
+        .pipe(connect.reload());
 })

@@ -13,3 +13,16 @@ gulp.task('server', function(){
     });
 });
 
+gulp.task('html', function(){
+    gulp.src('dev/**/*.html')
+        .pipe(htmlincluder())
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: 1
+        }))
+        .pipe(rename(function(path){
+            path.dirname = ''
+        }))
+        .pipe(gulp.dest('build/'))
+        .pipe(connect.reload());
+})

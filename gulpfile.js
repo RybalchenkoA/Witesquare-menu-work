@@ -29,11 +29,20 @@ gulp.task('html', function(){
 
 gulp.task('css', function(){
     gulp.src('dev/assets/css/*.css')
-        .pipe(concat_css())
+        .pipe(concat_css('css/mystyle.css'))
         .pipe(csso())
-        .pipe(rename(function(path){
-            path.dirname = ''
-        }))
-        .pipe(gulp.dest('build/css/mystyle.css'))
+        .pipe(gulp.dest('build/'))
         .pipe(connect.reload());
+});
+
+gulp.task('default', function(){
+    gulp.start(['server', 'html', 'css']);
+
+    gulp.watch(['dev/**/*.html'], function(){
+        gulp.start(['html']);
+    });
+
+    gulp.watch(['dev/assets/css/*.css'], function(){
+        gulp.start(['css']);
+    });
 })

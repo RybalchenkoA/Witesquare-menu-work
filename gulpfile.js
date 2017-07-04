@@ -6,3 +6,10 @@ var htmlincluder = require('gulp-htmlincluder');
 var concat_css = require('gulp-concat-css');
 var csso = require('gulp-csso');
 
+gulp.task('server', function(){
+    connect.server({
+        root: 'build/',
+        livereload: true
+    });
+});
+

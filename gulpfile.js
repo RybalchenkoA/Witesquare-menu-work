@@ -35,8 +35,16 @@ gulp.task('css', function(){
         .pipe(connect.reload());
 });
 
+gulp.task('move', function(){
+    gulp.src('dev/assets/img/*.*')
+        .pipe(rename(function(path){
+            path.dirname = ''
+        }))
+        .pipe(gulp.dest('build/img/'));
+});
+
 gulp.task('default', function(){
-    gulp.start(['server', 'html', 'css']);
+    gulp.start(['server', 'move', 'html', 'css']);
 
     gulp.watch(['dev/**/*.html'], function(){
         gulp.start(['html']);
@@ -45,4 +53,4 @@ gulp.task('default', function(){
     gulp.watch(['dev/assets/css/*.css'], function(){
         gulp.start(['css']);
     });
-})
+});

@@ -1,0 +1,30 @@
+.menu{
+  display: inline-block;
+  background-color: @element-bg;
+  width: 100%;
+  &-wrap{
+    border: 1px solid @base-color2;
+  }
+  li{
+    text-align: center;
+    cursor: pointer;
+    color: @active-text-color ;
+    .inline;
+    }
+  a{
+    color: @menu-text-color;
+    outline: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    padding: 14px 35px;
+  }
+  li{
+    a{
+      &:hover{
+        background: @active-color;
+        color: @active-text-color ;
+      }
+    }
+  }
+}
